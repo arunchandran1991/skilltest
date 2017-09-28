@@ -1,0 +1,20 @@
+{
+  "name": "quetzalapi",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "arun chandran",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "knex": "^0.13.0",
+    "mysql": "^2.14.1",
+    "restify": "^6.0.1",
+    "restify-errors": "^5.0.0",
+    "sqlite3": "^3.1.12"
+  }
+}
