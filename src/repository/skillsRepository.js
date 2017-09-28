@@ -19,7 +19,7 @@ class SkillsRepository{
         return knex('skills')
         .insert(skill)
         .then(() => {return 'success'})
-        .catch(reason => {return Promise.reject(new errors.BadRequestError(reason))});
+        .catch(reason => {return Promise.reject(new errors.InternalServerError(reason))});
     }
 
     updateSkills(id, skillName) {
@@ -27,7 +27,7 @@ class SkillsRepository{
         .where('id', id)
         .update(skillName)
         .then(() => {return 'success'})
-        .catch(reason => {return Promise.reject(new errors.BadRequestError(reason))});
+        .catch(reason => {return Promise.reject(new errors.InternalServerError(reason))});
     }
 
     updateStatus(id, status) {
@@ -35,7 +35,7 @@ class SkillsRepository{
         .where('id', id)
         .update(status)
         .then(() => {return 'success'})
-        .catch(reason => {return Promise.reject(new errors.BadRequestError(reason))});
+        .catch(reason => {return Promise.reject(new errors.InternalServerError(reason))});
     }
 
 }
