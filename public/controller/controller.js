@@ -1,8 +1,9 @@
 app.controller('testController', function($scope, $http) {
 
- var baseUrl = "http://localhost:8083"; 
+//  var baseUrl = "http://localhost:8083"; 
  $scope.skillList = [];
  $scope.showAdd = false;
+ $scope.searchSkills = {"query" : ""};
  $scope.addSkills = {
   "id": "",
   "name": "",
@@ -15,7 +16,7 @@ app.controller('testController', function($scope, $http) {
  $scope.addSkill = function() {
     
     $http
-     .post(baseUrl+'/api/skills', { "name": $scope.addSkills.name, "status": $scope.addSkills.status })
+     .post('/api/skills', { "name": $scope.addSkills.name, "status": $scope.addSkills.status })
      .then(function(res) {
       $scope.addSkills.id = $scope.skillList.length + 1;
       $scope.skillList.push($scope.addSkills)
@@ -28,7 +29,7 @@ app.controller('testController', function($scope, $http) {
 
  $scope.changeSkill = function(obj) {
       $http
-      .put(baseUrl+'/api/skills/'+ obj.id +'/update', { "name": obj.name })
+      .put('/api/skills/'+ obj.id +'/update', { "name": obj.name })
       .then(function(res) {
         var a = $scope.skillList.indexOf(obj);      
         $scope.skillList[a] = {
@@ -54,8 +55,8 @@ app.controller('testController', function($scope, $http) {
  }
 
  $scope.getAllSkills = function(){
-
-    $http.get(baseUrl+'/api/skills').then(function(res) {
+   var query = $scope.searchSkills.query;
+    $http.get('/api/skills',{params:{"q":query}}).then(function(res) {
         $scope.skillList = res.data; 
     });
     
